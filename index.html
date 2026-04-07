@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TRASNA — Dublin's New Way Forward</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --navy:      #1a2e5a;
+            --navy-mid:  #1e3a6e;
+            --sky:       #6aaee0;
+            --sky-light: #c8dcf0;
+            --sky-pale:  #eef5fb;
+            --white:     #ffffff;
+            --off-white: #f4f7fb;
+            --text:      #1a2e5a;
+            --text-body: #334155;
+            --border:    #d0dff0;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--text-body);
+            background: var(--white);
+        }
+
+        /* ── NAV ── */
+        nav {
+            background: var(--navy);
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            height: 70px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 12px rgba(26,46,90,0.25);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+        }
+
+        .nav-logo img {
+            height: 40px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--sky-light);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--white);
+        }
+
+        /* ── HERO ── */
+        .hero {
+            background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 60%, #1a4080 100%);
+            color: var(--white);
+            padding: 6rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 80% 60% at 50% 120%, rgba(106,174,224,0.18) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .hero-logo {
+            display: inline-block;
+            margin-bottom: 2rem;
+        }
+
+        .hero-logo img {
+            height: 80px;
+            width: auto;
+            filter: brightness(0) invert(1);
+        }
+
+        .hero-tagline {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--sky);
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.15rem;
+            font-weight: 400;
+            color: rgba(255,255,255,0.88);
+            max-width: 680px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        /* ── LAYOUT ── */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 5rem 0;
+        }
+
+        section.alt {
+            background: var(--off-white);
+        }
+
+        section.dark {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* ── TYPOGRAPHY ── */
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 800;
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            text-align: center;
+            letter-spacing: -0.01em;
+        }
+
+        section.dark h2 {
+            color: var(--white);
+        }
+
+        h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin: 2rem 0 0.75rem;
+        }
+
+        section.dark h3 {
+            color: var(--sky-light);
+        }
+
+        .lead {
+            font-size: 1.15rem;
+            line-height: 1.85;
+            color: var(--text-body);
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 3rem;
+        }
+
+        section.dark .lead {
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* ── IMAGES ── */
+        .image-full {
+            width: 100%;
+            max-width: 1200px;
+            margin: 3rem auto;
+            display: block;
+            border-radius: 14px;
+            box-shadow: 0 20px 60px rgba(26,46,90,0.18);
+        }
+
+        /* ── GRID ── */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        /* ── HOW IT WORKS CARDS ── */
+        .card {
+            background: var(--white);
+            padding: 2.25rem;
+            border-radius: 14px;
+            border-top: 4px solid var(--sky);
+            box-shadow: 0 4px 20px rgba(26,46,90,0.08);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(26,46,90,0.14);
+        }
+
+        .card h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-body);
+        }
+
+        /* ── STATS ── */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .stat {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--navy);
+            color: var(--white);
+            border-radius: 14px;
+            border-bottom: 4px solid var(--sky);
+        }
+
+        .stat-number {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: var(--sky);
+            display: block;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--sky-light);
+            letter-spacing: 0.02em;
+        }
+
+        /* ── FEATURE CARDS ── */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .feature-card {
+            background: var(--sky-pale);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 2rem;
+            border-left: 4px solid var(--sky);
+        }
+
+        .feature-card h3 {
+            font-size: 1.1rem;
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+        }
+
+        .feature-card p {
+            font-size: 0.98rem;
+            line-height: 1.7;
+            color: var(--text-body);
+        }
+
+        /* ── TIMELINE ── */
+        .timeline {
+            margin: 3rem 0;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 90px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, var(--sky), var(--navy));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+            position: relative;
+        }
+
+        .timeline-year {
+            flex-shrink: 0;
+            width: 90px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--sky);
+            padding-right: 1rem;
+            text-align: right;
+        }
+
+        .timeline-dot {
+            flex-shrink: 0;
+            width: 14px;
+            height: 14px;
+            background: var(--sky);
+            border: 3px solid var(--white);
+            border-radius: 50%;
+            margin-top: 6px;
+            box-shadow: 0 0 0 3px var(--sky);
+            position: relative;
+            z-index: 1;
+        }
+
+        .timeline-content {
+            flex-grow: 1;
+            padding-left: 1.75rem;
+        }
+
+        .timeline-content h4 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.4rem;
+        }
+
+        .timeline-content p {
+            font-size: 1rem;
+            color: var(--text-body);
+        }
+
+        /* ── Q&A ── */
+        .saq-item {
+            background: var(--white);
+            padding: 2rem 2.25rem;
+            margin-bottom: 1.25rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--navy);
+            box-shadow: 0 2px 10px rgba(26,46,90,0.06);
+        }
+
+        .saq-question {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 0.75rem;
+        }
+
+        .saq-answer {
+            font-size: 1rem;
+            line-height: 1.75;
+            color: var(--text-body);
+        }
+
+        .saq-answer ul {
+            margin: 0.75rem 0 0.75rem 1.5rem;
+        }
+
+        .saq-answer li {
+            margin-bottom: 0.4rem;
+        }
+
+        /* ── CTA ── */
+        .cta {
+            background: linear-gradient(150deg, var(--navy) 0%, var(--navy-mid) 100%);
+            color: var(--white);
+            padding: 5rem 2rem;
+            text-align: center;
+        }
+
+        .cta h2 {
+            color: var(--white);
+            margin-bottom: 1.25rem;
+        }
+
+        .cta p {
+            font-size: 1.15rem;
+            max-width: 720px;
+            margin: 0 auto;
+            opacity: 0.92;
+            line-height: 1.75;
+        }
+
+        .cta-accent {
+            margin-top: 2rem;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--sky);
+        }
+
+        /* ── DIVIDER ── */
+        .sky-divider {
+            height: 4px;
+            background: linear-gradient(90deg, var(--navy), var(--sky), var(--navy));
+        }
+
+        /* ── FOOTER ── */
+        footer {
+            background: var(--navy);
+            color: var(--sky-light);
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+
+        footer img {
+            height: 32px;
+            filter: brightness(0) invert(1);
+            opacity: 0.7;
+            margin-bottom: 0.75rem;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .two-col, .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 70px;
+            }
+
+            .timeline-year {
+                width: 70px;
+                font-size: 1.2rem;
+            }
+
+            h2 {
+                font-size: 1.9rem;
+            }
+
+            .hero-logo img {
+                height: 56px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAV -->
+    <nav>
+        <a href="#" class="nav-logo">
+            <img src="assets/trasna_logo.png" alt="TRASNA">
+        </a>
+        <ul class="nav-links">
+            <li><a href="#how">How It Works</a></li>
+            <li><a href="#numbers">The Numbers</a></li>
+            <li><a href="#timeline">Timeline</a></li>
+            <li><a href="#qa">Q&amp;A</a></li>
+            <li><a href="TRASNA_Technical_Appendix.pdf" target="_blank">Technical Appendix</a></li>
+        </ul>
+    </nav>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <img src="assets/trasna_logo.png" alt="TRASNA">
+            </div>
+            <div class="hero-tagline">Across Dublin. For everyone.</div>
+            <div class="hero-subtitle">A publicly owned fleet of 51,000 autonomous electric microcars, delivering door-to-door transport across all of County Dublin for €365 a year</div>
+        </div>
+    </div>
+
+    <div class="sky-divider"></div>
+
+    <!-- INTRO -->
+    <section id="intro">
+        <div class="container">
+            <h2>Every Part of County Dublin. At Your Door.</h2>
+            <p class="lead">TRASNA is a publicly owned autonomous transport system for <strong>every resident of County Dublin</strong> — from Balbriggan to Shankill, from Tallaght to Dún Laoghaire, from Blanchardstown to Ringsend. Whether you live in Swords, Clondalkin, Stillorgan, or the city centre, a TRASNA is always three minutes away — morning, noon, or midnight. No waiting in the rain. No taxi queues. No surge pricing. Just a clean, safe, autonomous car at your door.</p>
+
+            <img src="assets/TRASNA_vehicle_navy_day.jpg" alt="TRASNA autonomous microcar on a Dublin street" class="image-full">
+
+            <div class="two-col" style="margin-top: 0;">
+                <img src="assets/TRASNA_interior_no_wheel.jpg" alt="TRASNA interior with no steering wheel" style="width: 100%; border-radius: 14px; box-shadow: 0 10px 30px rgba(26,46,90,0.12);">
+                <img src="assets/TRASNA_app_mockup.png" alt="TRASNA app showing a car 2 minutes away" style="width: 100%; border-radius: 14px; box-shadow: 0 10px 30px rgba(26,46,90,0.12); object-fit: cover; max-height: 420px;">
+            </div>
+
+            <h3 id="how" style="text-align:center; font-size:1.8rem; margin-bottom:2rem;">How It Works</h3>
+            <div class="two-col">
+                <div class="card">
+                    <h4>Open the App</h4>
+                    <p>One button. No surge pricing, no waiting to see if a driver accepts. A TRASNA is always nearby.</p>
+                </div>
+                <div class="card">
+                    <h4>Three Minutes or Less</h4>
+                    <p>The nearest vehicle comes to you. No driver. No fuss. Just a clean, climate-controlled two-seat car with your name on the screen.</p>
+                </div>
+                <div class="card">
+                    <h4>Door to Door</h4>
+                    <p>Tell it where you're going, and sit back. TRASNA syncs with your devices — enjoy your own music, a podcast, check your feeds, make calls or attend a Zoom. The car handles the rest, merging smoothly with other TRASNA vehicles and navigating every road in the county without you lifting a finger.</p>
+                </div>
+                <div class="card">
+                    <h4>€365 a Year</h4>
+                    <p>A flat annual subscription. Unlimited trips. No hidden fees. Cheaper than a bus pass, more convenient than owning a car.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WHAT CHANGES -->
+    <section class="alt">
+        <div class="container">
+            <h2>What Changes</h2>
+            <p class="lead">TRASNA isn't just a transport system. It's a transformation of how all four Dublin local authorities work, move, and live.</p>
+
+            <div class="two-col">
+                <div>
+                    <h3>The City and Suburbs</h3>
+                    <p>Whether you live in the city centre or the outer suburbs, TRASNA gives you a genuine alternative to the car. In the suburbs, it can take you directly to where you are going, or to high-speed bus, or rail or Luas stops. In the city, it makes every journey faster, cheaper, and more convenient than driving and parking.</p>
+                </div>
+                <div>
+                    <h3>Public Transport</h3>
+                    <p>In some areas, buses and trams will remain the backbone for high-capacity corridors. TRASNA will fill the gaps — the last mile, the multi-stop journey, the late-night trip home.</p>
+                </div>
+                <div>
+                    <h3>The Night Out</h3>
+                    <p>No more queueing for taxis at 2am. No more temptation to drink-drive. A TRASNA is always there, waiting to take you home safely.</p>
+                </div>
+                <div>
+                    <h3>Families</h3>
+                    <p>Parents can send their teenagers home from training, monitored in real-time via the app. Elderly relatives can travel independently without relying on family or expensive taxis.</p>
+                </div>
+            </div>
+
+            <img src="assets/TRASNA_vehicle_navy_night.jpg" alt="TRASNA at night on a wet Dublin street" class="image-full">
+
+            <h3 style="text-align: center; margin-top: 4rem; font-size:1.8rem;">The V2V Zipper Merge</h3>
+            <p class="lead">TRASNA vehicles communicate with each other 10 times per second. At junctions, they don't need traffic lights. They simply adjust their speed to weave through each other without stopping — increasing road capacity by 40%.</p>
+            <img src="assets/TRASNA_v2v_junction.jpg" alt="TRASNA vehicles zipper merging at a Dublin junction" class="image-full" style="margin-top: 1rem;">
+        </div>
+    </section>
+
+    <!-- NUMBERS -->
+    <section id="numbers">
+        <div class="container">
+            <h2>The Numbers</h2>
+            <div class="stats">
+                <div class="stat">
+                    <span class="stat-number">€1.02bn</span>
+                    <span class="stat-label">Total Capital Cost</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">51,000</span>
+                    <span class="stat-label">Autonomous Vehicles</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-number">3 min</span>
+                    <span class="stat-label">Maximum Wait Time</span>
+                </div>
+            </div>
+            <p class="lead">By utilising Dublin's existing bus lanes, TRASNA requires a fleet of just 51,000 vehicles to guarantee a 3-minute wait time across all four local authority areas (Dublin City, Fingal, South Dublin, and Dún Laoghaire-Rathdown). It costs less than one-tenth of MetroLink, covers the entire county from day one, and begins operating in 2029.</p>
+        </div>
+    </section>
+
+    <!-- BUILT TO LAST -->
+    <section class="alt">
+        <div class="container">
+            <h2>Built to Last</h2>
+            <p class="lead">TRASNA is not just a fleet of cars; it is critical national infrastructure. It is designed to be secure, reliable, and continuously improving.</p>
+
+            <div class="features">
+                <div class="feature-card">
+                    <h3>Your Data is Yours</h3>
+                    <p>TRASNA will know where you travel, which is why privacy is written into its charter. TRASNA will <strong>never</strong> sell your personal data, location history, or travel patterns to third parties. It is a public service, not a data broker.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Self-Maintaining Fleet</h3>
+                    <p>A TRASNA microcar is built for a 7-year, 250,000km lifespan. Because they are electric, they have 50% lower maintenance costs than petrol cars. When a vehicle's sensors detect a maintenance need or a drop in cleanliness, it simply drives itself to a depot for servicing.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>1,500 New Jobs</h3>
+                    <p>While the cars are driverless, the system requires a massive human workforce. TRASNA will directly employ approximately 1,500 people — including remote assistance operators, depot technicians, mechanics, cleaners, and software engineers.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Military-Grade Security</h3>
+                    <p>TRASNA vehicles do not rely on a live internet connection to drive safely — all collision avoidance happens on the car itself. The fleet operates on an isolated, encrypted sub-network, meaning a breach cannot spread.</p>
+                </div>
+                <div class="feature-card">
+                    <h3>Better Every Year</h3>
+                    <p>Like your smartphone, TRASNA improves over time. Every year, the fleet receives major Over-The-Air (OTA) software upgrades — delivering smoother cornering, better routing, and new app features.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WORLD FIRST -->
+    <section class="dark">
+        <div class="container" style="text-align:center;">
+            <h2>A World First for Ireland</h2>
+            <p class="lead">TRASNA is more than a transport project. It is a statement of national ambition.</p>
+            <p style="max-width: 800px; margin: 0 auto 1.5rem auto; font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.88);">In the 1960s, Seán Lemass and T.K. Whitaker transformed Ireland from an agrarian economy into a modern industrial state. Today, Ireland is the European home of the world's leading technology and AI companies. Yet our physical infrastructure often lags behind our digital economy.</p>
+            <p style="max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.75; color: rgba(255,255,255,0.88);">By building the world's first publicly owned, county-wide autonomous transport network, Ireland would cement its position as a global leader in applied AI and smart infrastructure. TRASNA would generate massive, sustained positive publicity worldwide — proving that the forward-looking, innovative spirit of the Whitaker era is alive and well in the 21st century.</p>
+        </div>
+    </section>
+
+    <!-- TIMELINE -->
+    <section id="timeline" class="alt">
+        <div class="container">
+            <h2>The Timeline</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-year">2026</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Decision &amp; Procurement</h4>
+                        <p>Government approval. Establish TRASNA as a statutory body. Issue tender for vehicle manufacture and AV technology partner.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2027</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Design &amp; Initial Fleet</h4>
+                        <p>Finalise vehicle design. First 5,000 units delivered. Build charging infrastructure across the county.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2028</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>County-Wide Beta Trial</h4>
+                        <p>Deploy 15,000 vehicles across all of Dublin city and county. Access limited to 50,000 beta users to test the full door-to-door experience at scale.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2029</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Full Launch</h4>
+                        <p>51,000-vehicle fleet operational across all of Dublin city and county. Every resident of County Dublin has a TRASNA within three minutes of their door.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-year">2030+</div>
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h4>Expansion</h4>
+                        <p>Extend to Meath, Kildare, and Wicklow. Integrate with national rail and bus networks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Q&A -->
+    <section id="qa">
+        <div class="container">
+            <h2>Questions &amp; Answers</h2>
+
+            <div class="saq-item">
+                <div class="saq-question">Who pays for it?</div>
+                <div class="saq-answer">The capital cost of €1.22 billion is less than one-eighth of the central estimate for MetroLink. The system generates approximately €305 million a year in subscriptions and advertising, requiring an initial Public Service Obligation (PSO) subvention of just €115 million a year — less than what the State currently pays to run Dublin Bus. As take-up increases, the system will reach break-even, and any surpluses will be reinvested in continuous improvements.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Is the technology ready?</div>
+                <div class="saq-answer">Yes. Waymo has been operating fully autonomous taxis in San Francisco and Phoenix since 2020, completing over 2 million paid trips. Sensor costs have fallen 99% since 2015. The technology is mature, proven, and ready for deployment.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">What happens to taxi drivers?</div>
+                <div class="saq-answer">TRASNA will be phased in over three years, giving the taxi industry time to adjust. Drivers can transition to fleet management, vehicle maintenance, customer service, or other roles within the system. A €50 million transition fund will support retraining and early retirement.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Won't this just create a different kind of traffic jam?</div>
+                <div class="saq-answer">No. TRASNA vehicles use Vehicle-to-Vehicle (V2V) communication to merge seamlessly at junctions without stopping — a "zipper merge" that eliminates traffic lights and stop-start congestion. Research shows this increases road capacity by 40% at 100% AV penetration.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">How long will the cars last, and who maintains them?</div>
+                <div class="saq-answer">Electric vehicles have far fewer moving parts than petrol cars. A TRASNA microcar is designed for a 7-year or 250,000km lifespan in heavy fleet use. Maintenance is handled centrally at dedicated TRASNA depots located strategically across the four local authority areas. Because the vehicles are autonomous, they drive themselves to the depot when their sensors detect a maintenance need or when they require deep cleaning. The system will employ approximately 1,500 people directly — including mechanics, cleaners, remote assistance operators, and software engineers.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">What about software security? Could the system be hacked?</div>
+                <div class="saq-answer">Security is the foundational pillar of the system. TRASNA operates as critical national infrastructure. The vehicles do not rely on a continuous internet connection to drive safely — all collision avoidance and navigation processing happens on the car itself. The central network only provides routing instructions. Furthermore, the system uses military-grade encryption and isolated sub-networks, meaning a theoretical breach of one vehicle cannot spread to the fleet.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Will the cars get outdated quickly?</div>
+                <div class="saq-answer">No. Like a modern smartphone, TRASNA vehicles improve over time through Over-The-Air (OTA) software updates. Every year, the fleet receives a major system upgrade — delivering smoother cornering, better route prediction, and new app features. Hardware improvements are rolled out continuously as older vehicles are cycled out of the fleet and replaced with newer models, ensuring the user experience is always improving.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">How much does it cost to use?</div>
+                <div class="saq-answer">TRASNA operates on a subscription model with no per-journey fares. The pricing tiers are designed to be universally affordable:
+                <ul>
+                    <li><strong>€365/year:</strong> Annual adult subscription</li>
+                    <li><strong>€100/year:</strong> Concession for students, under-18s, pensioners, and disability benefit recipients</li>
+                    <li><strong>€50/month:</strong> Rolling monthly subscription for all users</li>
+                    <li><strong>€25/week:</strong> Rolling weekly subscription for all users</li>
+                </ul>
+                This tiered structure generates approximately €285 million in annual subscription revenue. In addition, TRASNA will generate commercial revenue through vehicle exterior sponsorship and non-intrusive in-app advertising, projected to generate an additional €15–€25 million annually, bringing total system revenue to approximately €305 million per year.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Will there be advertising on the cars?</div>
+                <div class="saq-answer">Yes. Similar to Dublin Bus and Dublin Bikes, TRASNA will generate commercial revenue through vehicle exterior sponsorship and non-intrusive in-app advertising. Given the fleet size and visibility, this is projected to generate an additional €15–€25 million annually, bringing total system revenue to over €300 million per year.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">How is the capital cost financed?</div>
+                <div class="saq-answer">Three options: (1) direct Exchequer funding; (2) a 20-year local authority bond at 3.5% interest; or (3) a public-private partnership with the State retaining majority ownership. All three are financially viable and deliver better value than MetroLink.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">What is the best-case scenario? What if everyone wants to use it?</div>
+                <div class="saq-answer">If TRASNA becomes as ubiquitous as the smartphone — reaching 80% take-up across Dublin — the county transforms completely. At 80% take-up, the system would require a fleet of approximately 123,000 vehicles to meet peak demand. This would cost €2.96 billion to build (still a fraction of MetroLink). It would generate €681 million in annual revenue and — crucially — it would remove an estimated <strong>398,000 private cars</strong> from Dublin's roads. At that scale, Dublin becomes the world's first post-car county.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Will TRASNA vehicles be allowed to use bus lanes?</div>
+                <div class="saq-answer">Yes. As a licensed public transport service, TRASNA vehicles will have full access to Dublin's 220km network of bus lanes, just as taxis do today. This is a game-changer for journey times. During rush hour, a TRASNA vehicle using the bus lane on the N11 or Drumcondra Road will bypass general traffic, cutting average journey times by up to 30%. Because the vehicles move faster, they complete more trips per hour, which actually reduces the total number of vehicles needed to serve the city.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">What happens during a major event, like an All-Ireland Final at Croke Park?</div>
+                <div class="saq-answer">Croke Park holds 82,300 people, creating a massive, localised demand spike. TRASNA handles this through predictive pre-positioning and geofenced pickup zones. The system knows the match schedule and moves thousands of idle vehicles to the surrounding areas before the final whistle. While the 3-minute guarantee applies to normal daily operations, wait times immediately outside the stadium after a major match may be 8–12 minutes — still vastly superior to current taxi queues.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">Why not just let Uber or Waymo run it?</div>
+                <div class="saq-answer">Because transport is a public good, not a profit centre. Public ownership means fares stay low, coverage is universal, and profits are reinvested in the system rather than extracted by shareholders. Dublin Bus and Luas are publicly owned for the same reason.</div>
+            </div>
+
+            <div class="saq-item">
+                <div class="saq-question">How can I find out more about this exciting project?</div>
+                <div class="saq-answer">The full, rigorously evidenced technical and financial analysis underpinning this proposal is available in the <a href="TRASNA_Technical_Appendix.pdf" target="_blank" style="color: var(--navy); font-weight: 600; text-decoration: underline;">TRASNA Technical Appendix</a>.</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA -->
+    <div class="cta">
+        <div class="container">
+            <h2>A New Way Forward</h2>
+            <p>TRASNA is not just cheaper, faster, and more flexible than MetroLink. It is a once-in-a-generation opportunity to transform Dublin into a city where clean, safe, universal transport is a right, not a luxury.</p>
+            <p class="cta-accent">The technology is ready. The economics are proven. The only question is whether we have the ambition to build it.</p>
+        </div>
+    </div>
+
+    <div class="sky-divider"></div>
+
+    <!-- FOOTER -->
+    <footer>
+        <img src="assets/trasna_logo.png" alt="TRASNA">
+        <p>© 2026 TRASNA — A proposal for publicly owned autonomous transport across County Dublin</p>
+    </footer>
+
+</body>
+</html>
