@@ -36,7 +36,7 @@
 
         /* ── NAV ── */
         nav {
-            background: var(--navy);
+            background: var(--white);
             padding: 0 2rem;
             display: flex;
             align-items: center;
@@ -44,7 +44,8 @@
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 12px rgba(26,46,90,0.25);
+            box-shadow: 0 2px 12px rgba(26,46,90,0.15);
+            border-bottom: 3px solid var(--sky);
         }
 
         .nav-logo {
@@ -55,7 +56,7 @@
         }
 
         .nav-logo img {
-            height: 40px;
+            height: 44px;
             width: auto;
         }
 
@@ -67,7 +68,7 @@
         }
 
         .nav-links a {
-            color: var(--sky-light);
+            color: var(--navy);
             text-decoration: none;
             font-family: 'Montserrat', sans-serif;
             font-weight: 600;
@@ -78,7 +79,7 @@
         }
 
         .nav-links a:hover {
-            color: var(--white);
+            color: var(--sky);
         }
 
         /* ── HERO ── */
@@ -499,7 +500,7 @@
     <!-- NAV -->
     <nav>
         <a href="#" class="nav-logo">
-            <img src="assets/trasna_logo_white.png" alt="TRASNA">
+            <img src="assets/trasna_logo_original.jpg" alt="TRASNA">
         </a>
         <ul class="nav-links">
             <li><a href="#how">How It Works</a></li>
@@ -514,7 +515,30 @@
     <div class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="assets/trasna_logo_white.png" alt="TRASNA">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 110" height="90" aria-label="TRASNA">
+                  <!-- Car body -->
+                  <ellipse cx="155" cy="72" rx="130" ry="34" fill="#ffffff"/>
+                  <path d="M55 72 Q52 55 62 42 Q78 22 105 14 Q128 8 158 8 Q188 8 208 16 Q228 24 238 38 Q248 52 248 68 L248 78 Q240 84 55 84 Z" fill="#ffffff"/>
+                  <!-- Windscreen -->
+                  <path d="M80 68 Q82 48 96 34 Q112 18 138 12 Q162 8 185 12 Q205 18 218 32 Q228 44 228 62 L228 68 Z" fill="#6aaee0" opacity="0.9"/>
+                  <!-- Window tint strip -->
+                  <rect x="80" y="62" width="148" height="8" rx="2" fill="#c8dcf0" opacity="0.6"/>
+                  <!-- Door line -->
+                  <line x1="158" y1="12" x2="158" y2="80" stroke="#c8dcf0" stroke-width="2" opacity="0.5"/>
+                  <!-- Headlight -->
+                  <ellipse cx="243" cy="66" rx="7" ry="5" fill="#c8dcf0"/>
+                  <!-- Rear light -->
+                  <ellipse cx="60" cy="66" rx="5" ry="4" fill="#c8dcf0" opacity="0.7"/>
+                  <!-- Wheels -->
+                  <circle cx="100" cy="84" r="18" fill="#d0dff0"/>
+                  <circle cx="100" cy="84" r="12" fill="#eef5fb"/>
+                  <circle cx="100" cy="84" r="5" fill="#ffffff"/>
+                  <circle cx="205" cy="84" r="18" fill="#d0dff0"/>
+                  <circle cx="205" cy="84" r="12" fill="#eef5fb"/>
+                  <circle cx="205" cy="84" r="5" fill="#ffffff"/>
+                  <!-- TRASNA wordmark -->
+                  <text x="275" y="72" font-family="Montserrat,Arial Black,sans-serif" font-weight="800" font-size="58" fill="#ffffff" letter-spacing="-1">TRASNA</text>
+                </svg>
             </div>
             <div class="hero-tagline">Across Dublin. For everyone.</div>
             <div class="hero-subtitle">A publicly owned fleet of 51,000 autonomous electric microcars, delivering door-to-door transport across all of County Dublin for €365 a year</div>
